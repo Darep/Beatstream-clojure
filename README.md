@@ -10,6 +10,13 @@ roar.
 Check out the current "stable" project at
 [https://github.com/Darep/Beatstream](https://github.com/Darep/Beatstream)
 
+### HELP!
+
+Hey, you there! If you know Clojure, and see that **I suck,
+[please add a comment](https://help.github.com/articles/adding-commit-comments)**
+near the bad code in GitHub! Even better, you can tell me why I suck. Or
+[create a pull request](https://github.com/Darep/Beatstream-clojure/compare/)!
+
 ### Installation
 
 Whoa, there. This is a work in progress. No instructions, yet! Sorry!
