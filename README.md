@@ -10,6 +10,12 @@ roar.
 Check out the current "stable" project at
 [https://github.com/Darep/Beatstream](https://github.com/Darep/Beatstream)
 
+### Usage
+
+Requirements: Clojure and [leiningen](https://github.com/technomancy/leiningen).
+
+Download the source and run `lein ring server` to start the development server.
+
 ### HELP!
 
 Hey, you there! If you know Clojure, and see that **I suck,
