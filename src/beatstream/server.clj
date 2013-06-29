@@ -7,6 +7,7 @@
             [ring.middleware.json :refer [wrap-json-body wrap-json-response]]
             [ring.middleware.file :refer [wrap-file]]
             [ring.middleware.file-info :refer [wrap-file-info]]
+            [ring.util.response :as resp]
             [noir.util.middleware :refer [wrap-strip-trailing-slash wrap-canonical-host wrap-force-ssl]]))
 
 (defroutes api-routes
@@ -28,12 +29,10 @@
   (POST "scrobble" [] "scrobble the now playing OR specified song")
   (route/not-found common/not-found))
 
-(def ^:private root "resources/public")
-
 (defroutes public-routes
-  (-> (ANY "*" request common/not-found)
-      (wrap-file root)
-      wrap-file-info))
+  (GET "/" [] (resp/resource-response "index.html" {:root "public"}))
+  (route/resources "/")
+  (route/not-found (common/not-found)))
 
 ; (defn wrap-prod-middleware [routes]
 ;   (if (System/getenv "LEIN_NO_DEV")
