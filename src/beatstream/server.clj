@@ -1,10 +1,11 @@
 (ns beatstream.server
-  (:use korma.db)
   (:use compojure.core)
   (:require [beatstream.profile :as profile]
             [compojure.handler :as handler]
             [compojure.route :as route]
-            [ring.middleware.json :as middleware]
+            [ring.middleware.json :refer [wrap-json-body wrap-json-response]]
+            [ring.middleware.file :refer [wrap-file]]
+            [ring.middleware.file-info :refer [wrap-file-info]]
             [noir.util.middleware :refer [wrap-strip-trailing-slash wrap-canonical-host wrap-force-ssl]]))
 
 (def db (h2 {:db "resources/db/korma.db"}))
@@ -30,8 +31,12 @@
   (POST "scrobble" [] "scrobble the now playing OR specified song")
   (route/not-found "Not Found"))
 
+(def ^:private root "resources/public")
+
 (defroutes public-routes
-  (GET "/" [] "yay, display the app here!"))
+  (-> (ANY "*" request common/not-found)
+      (wrap-file root)
+      wrap-file-info))
 
 ; (defn wrap-prod-middleware [routes]
 ;   (if (System/getenv "LEIN_NO_DEV")
@@ -45,6 +50,6 @@
     (handler/api
       (context "/api/v1" []
         (-> api-routes
-          (middleware/wrap-json-body)
-          (middleware/wrap-json-response))))
+          (wrap-json-body)
+          (wrap-json-response))))
     (handler/site public-routes)))
