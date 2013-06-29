@@ -1,4 +1,4 @@
-(ns beatstream.views.profile
+(ns beatstream.controllers.profile
   (:use ring.util.response))
 
 (defn show []

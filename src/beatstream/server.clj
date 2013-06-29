@@ -1,8 +1,8 @@
 (ns beatstream.server
   (:use compojure.core)
-  (:require [beatstream.common :as common]
-            [beatstream.views.profile :as profile]
-            [beatstream.views.songs :as songs]
+  (:require [beatstream.controllers.common :as common]
+            [beatstream.controllers.profile :as profile]
+            [beatstream.controllers.songs :as songs]
             [compojure.handler :as handler]
             [compojure.route :as route]
             [ring.middleware.json :refer [wrap-json-body wrap-json-response]]
@@ -36,6 +36,6 @@
     (handler/api
       (context "/api/v1" []
         (-> api-routes
-          (wrap-json-body)
-          (wrap-json-response))))
+            (wrap-json-body)
+            (wrap-json-response))))
     (handler/site public-routes)))

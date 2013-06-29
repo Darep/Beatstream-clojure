@@ -1,4 +1,4 @@
-(ns beatstream.common
+(ns beatstream.controllers.common
   (:require [ring.util.response :as response]))
 
 (defn not-found []

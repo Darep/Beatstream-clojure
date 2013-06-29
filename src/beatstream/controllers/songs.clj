@@ -1,4 +1,4 @@
-(ns beatstream.views.songs
+(ns beatstream.controllers.songs
   (:use ring.util.response))
 
 (defn update-medialibrary []
