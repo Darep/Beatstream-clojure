@@ -9,10 +9,6 @@
             [ring.middleware.file-info :refer [wrap-file-info]]
             [noir.util.middleware :refer [wrap-strip-trailing-slash wrap-canonical-host wrap-force-ssl]]))
 
-(def db (h2 {:db "resources/db/korma.db"}))
-
-(defdb korma-db db)
-
 (defroutes api-routes
   (context "/profile" []
     (defroutes profile-routes
