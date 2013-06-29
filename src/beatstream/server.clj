@@ -31,7 +31,7 @@
   (route/resources "/")
   (route/not-found (common/not-found)))
 
-(def handler
+(def app
   (routes
     (handler/api
       (context "/api/v1" []

@@ -8,14 +8,14 @@
                  [lobos "1.0.0-beta1"]
                  [korma "0.3.0-RC5"]
                  [sonian/carica "1.0.3"]
-                 [lib-noir "0.6.4"]]
+                 [lib-noir "0.6.4"]
+                 [ring/ring-jetty-adapter "1.1.0"]]
                  ; [liberator "0.9.0"]
-                 ; [ring/ring-jetty-adapter "1.1.0"]]
   :plugins [[lein-ring "0.8.5"]]
   :profiles {:dev {:dependencies [[midje "1.5.1"]
                                   [ring-mock "0.1.5"]]}
              :production {:ring {:open-browser? false
                                  :auto-reload? false
                                  :stacktraces? false}}}
-  :ring {:handler beatstream.server/handler}
-  :main beatstream.server/handler)
+  :ring {:handler beatstream.server/app}
+  :main beatstream.main)
