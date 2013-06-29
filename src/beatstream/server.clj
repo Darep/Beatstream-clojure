@@ -22,10 +22,6 @@
       (GET "/" [] (songs/all))
       (GET "/play" {params :params} (songs/play params))
       (POST "/" [] (songs/refresh))))
-  ; TODO: playlist routes
-  ; (context "/playlists" []
-  ;   (defroutes playlists-routes
-  ;     (GET "/" [] "list user's playlists")))
   (PUT "now-playing" [] "update now playing")
   (POST "scrobble" [] "scrobble the now playing OR specified song")
   (route/not-found (common/not-found)))
@@ -34,13 +30,6 @@
   (GET "/" [] (resp/resource-response "index.html" {:root "public"}))
   (route/resources "/")
   (route/not-found (common/not-found)))
-
-; (defn wrap-prod-middleware [routes]
-;   (if (System/getenv "LEIN_NO_DEV")
-;     (-> routes
-;         (wrap-canonical-host (System/getenv "CANONICAL_HOST"))
-;         (wrap-force-ssl))
-;     routes))
 
 (def handler
   (routes
