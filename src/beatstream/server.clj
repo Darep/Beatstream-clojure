@@ -1,7 +1,8 @@
 (ns beatstream.server
   (:use compojure.core)
   (:require [beatstream.common :as common]
-            [beatstream.profile :as profile]
+            [beatstream.views.profile :as profile]
+            [beatstream.views.songs :as songs]
             [compojure.handler :as handler]
             [compojure.route :as route]
             [ring.middleware.json :refer [wrap-json-body wrap-json-response]]
@@ -18,16 +19,16 @@
       (PUT "/" {body :body} (profile/update body))))
   (context "/songs" []
     (defroutes songs-routes
-      (GET "/" [] "all songs")
-      (GET "/play" [] "play a song, ?file=<path>")
-      (POST "/" [] "refresh media libraryyyyyhhh")))
+      (GET "/" [] (songs/all))
+      (GET "/play" {params :params} (songs/play params))
+      (POST "/" [] (songs/refresh))))
   ; TODO: playlist routes
   ; (context "/playlists" []
   ;   (defroutes playlists-routes
   ;     (GET "/" [] "list user's playlists")))
   (PUT "now-playing" [] "update now playing")
   (POST "scrobble" [] "scrobble the now playing OR specified song")
-  (route/not-found common/not-found))
+  (route/not-found (common/not-found)))
 
 (defroutes public-routes
   (GET "/" [] (resp/resource-response "index.html" {:root "public"}))

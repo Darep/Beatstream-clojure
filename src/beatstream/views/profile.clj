@@ -1,8 +1,8 @@
-(ns beatstream.profile
+(ns beatstream.views.profile
   (:use ring.util.response))
 
 (defn show []
-  (response {:hello "world2"}))
+  (response {:username "dummy"}))
 
 (defn lastfm []
   (response (str "lastfm" "test")))
