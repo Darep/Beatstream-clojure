@@ -1,6 +1,7 @@
 (ns beatstream.server
   (:use compojure.core)
-  (:require [beatstream.profile :as profile]
+  (:require [beatstream.common :as common]
+            [beatstream.profile :as profile]
             [compojure.handler :as handler]
             [compojure.route :as route]
             [ring.middleware.json :refer [wrap-json-body wrap-json-response]]
@@ -29,7 +30,7 @@
   ;     (GET "/" [] "list user's playlists")))
   (PUT "now-playing" [] "update now playing")
   (POST "scrobble" [] "scrobble the now playing OR specified song")
-  (route/not-found "Not Found"))
+  (route/not-found common/not-found))
 
 (def ^:private root "resources/public")
 
