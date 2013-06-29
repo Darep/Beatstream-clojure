@@ -1,7 +1,10 @@
 (ns beatstream.database
-  (:use korma.db))
+  (:use korma.db)
+  (:use korma.core)
+  (:require [beatstream.config :as beatstream-config])))
 
-(def db (h2 {:db "resources/db/korma.db"}))
+(def db beatstream-config/db)
 
 (defdb korma-db db)
 
+(defentity users)

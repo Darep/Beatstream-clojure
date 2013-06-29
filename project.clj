@@ -5,6 +5,7 @@
                  [compojure "1.1.5"]
                  [ring/ring-json "0.2.0"]
                  [com.h2database/h2 "1.3.170"]
+                 [lobos "1.0.0-beta1"]
                  [korma "0.3.0-RC5"]
                  [sonian/carica "1.0.3"]
                  [lib-noir "0.6.4"]]
