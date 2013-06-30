@@ -1,6 +1,6 @@
 # Beatstream Clojure
 
-A work-in-progress Clojure-based implementation of the
+**A work-in-progress** Clojure-based implementation of the
 [Beatstream](http://www.beatstream.fi/) backend (REST API).
 
 **What?** Yup. I figured I'd learn Clojure, so I thought, I might aswell see
