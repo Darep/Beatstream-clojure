@@ -17,4 +17,4 @@
              :production {:ring {:open-browser? false
                                  :auto-reload? false
                                  :stacktraces? false}}}
-  :main beatstream.main)
+  :main beatstream.app)

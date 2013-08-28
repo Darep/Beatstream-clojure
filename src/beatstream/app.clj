@@ -1,4 +1,4 @@
-(ns beatstream.main
+(ns beatstream.app
   (:use compojure.core)
   (:gen-class)
   (:require [beatstream.controllers.common :as common]
