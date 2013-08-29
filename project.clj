@@ -12,9 +12,11 @@
                  [sonian/carica "1.0.3"]
                  [org/jaudiotagger "2.0.3"]]
                  ; [liberator "0.9.0"]
+  :plugins [[lein-ring "0.8.5"]]
   :profiles {:dev {:dependencies [[midje "1.5.1"]
                                   [ring-mock "0.1.5"]]}
              :production {:ring {:open-browser? false
                                  :auto-reload? false
                                  :stacktraces? false}}}
+  :ring {:handler beatstream.app/app}
   :main beatstream.app)
