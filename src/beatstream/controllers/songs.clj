@@ -13,11 +13,15 @@
        (filter #(.isFile %))
        (filter #(re-find #"(?i)\.(mp3|ogg)$" (.getAbsolutePath %)))))
 
+(defn get-tags [f]
+  (into {} (for [field (iterator-seq (.getFields (.getTag (AudioFileIO/read f))))]
+       [(keyword (.getId field)) (.toString field)])))
+
 (defn update-medialibrary []
   "TODO: read ID3, add file to database with ID3 info"
   "artist, album, title, album artist, tracknumber, title, duration, year, genre, file path"
   (doseq [f (get-song-files music-path)]
-    (println (.getFirst (.getTag (AudioFileIO/read f)) FieldKey/ARTIST))))
+    (println (get-tags f))))
 
 (defn all []
   "Return all the media files currently in the DB"
